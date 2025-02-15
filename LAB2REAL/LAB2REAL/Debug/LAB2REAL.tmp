@@ -23,8 +23,8 @@
   <FILE>LAB2REAL.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <SETUP><FILE>C:\Users\laloj\Documents\Lab2wehehehe\LAB2REAL\LAB2REAL\main.asm</FILE><LINE>22</LINE></SETUP>
-  <INIT_TMR0><FILE>C:\Users\laloj\Documents\Lab2wehehehe\LAB2REAL\LAB2REAL\main.asm</FILE><LINE>68</LINE></INIT_TMR0>
-  <LOOP><FILE>C:\Users\laloj\Documents\Lab2wehehehe\LAB2REAL\LAB2REAL\main.asm</FILE><LINE>46</LINE></LOOP>
+  <SETUP><FILE>C:\Users\laloj\Documents\Lab2wehehehe\LAB2REAL\LAB2REAL\main.asm</FILE><LINE>21</LINE></SETUP>
+  <LOOP><FILE>C:\Users\laloj\Documents\Lab2wehehehe\LAB2REAL\LAB2REAL\main.asm</FILE><LINE>34</LINE></LOOP>
+  <INIT_TMR0><FILE>C:\Users\laloj\Documents\Lab2wehehehe\LAB2REAL\LAB2REAL\main.asm</FILE><LINE>56</LINE></INIT_TMR0>
  </LABELS>
 </ASSEMBLER_INFO>

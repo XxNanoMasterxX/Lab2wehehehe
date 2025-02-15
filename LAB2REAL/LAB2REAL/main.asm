@@ -10,7 +10,6 @@
 .include "M328PDEF.inc" // Include definitions specific to ATMega328P
 .cseg
 .org 0x0000
-.def COUNTER = R20
 /****************************************/
 // Configuraci n de la pila?
 LDI R16, LOW(RAMEND)
@@ -20,17 +19,6 @@ OUT SPH, R16
 /****************************************/
 
 SETUP:
-// Configurar Prescaler "Principal"
-LDI R16, (1 << CLKPCE)
-STS CLKPR, R16 // Habilitar cambio de PRESCALER
-LDI R16, 0b00000100
-STS CLKPR, R16 // Configurar Prescaler a 16 F_cpu = 1MHz
-// Inicializar timer0
-CALL INIT_TMR0
-// Deshabilitar serial (esto apaga los dem s LEDs del Arduino)?
-LDI R16, 0x00
-STS UCSR0B, R16
-; Aqui dejo de compiar a pedro gracias pedro te apreciamos mucho pedro
 
 // Setup de los pins
 LDI R16, 0xff
@@ -51,7 +39,7 @@ SBI TIFR0, TOV0 // Limpiar bandera de "overflow"
 LDI R16, 100
 OUT TCNT0, R16 // Volver a cargar valor inicial en TCNT0
 INC COUNTER
-CPI COUNTER, 50 // R20 = 50 after 500ms (since TCNT0 is set to 10 ms)
+CPI COUNTER, 10 // R20 = 50 after 500ms (since TCNT0 is set to 10 ms)
 BRNE LOOP
 CLR COUNTER
 OUT PINB, R17
