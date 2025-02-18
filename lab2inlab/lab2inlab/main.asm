@@ -42,7 +42,7 @@ LDI R21, 0xff
 LDI R22, 0X00
 LDI ZL, LOW(mitabla<<1)
 LDI ZH, HIGH(mitabla<<1)
-LPM R20, Z
+LPM R20, Z // Se carga el valor inicial de z hacia el port, este siendo 0.
 EOR R20, R21
 OUT PORTD, R20
 OUT PORTB, R16 //Salida inicialmente apagada
@@ -60,14 +60,14 @@ CALL DELAY
 IN R16, PINC
 CP R17, R16
 BREQ LOOP
-MOV R17, R16
-
+MOV R17, R16 //Previene que haya cambios si el boton se deja presionado.
+; Aqui comienza la logica para escribir al display
 SBIS PINC, 0
 CALL INCRE
 SBIS PINC, 1
 CALL DECRE
 LPM R20, Z
-EOR R20, R21
+EOR R20, R21 // Se niega el numero hexadecimal que va al display. Esto lo hice porque mis displays son de anodo comun.
 OUT PORTD, R20
 OUT TIFR0, R19
 CP R18, R22
@@ -77,7 +77,7 @@ CBI PORTB, PB0
 CBI PORTB, PB1
 CBI PORTB, PB2
 CBI PORTB, PB3
-SBI PINB, PB4
+SBI PINB, PB4 // Se reinicia el contador, se ponen los bits de salida del contador en 0 y se prende el quinto led de bandera.
 mainend1:
 JMP LOOP
 
@@ -92,7 +92,7 @@ CLR COUNTER
 OUT PINB, R22
 INC R22
 ANDI R22, 0X0F
-OUT PINB, R22
+OUT PINB, R22 // Se escribe al pin contador sin tocar la bandera
 CP R18, R22
 BRNE mainend2
 LDI R22, 0x00
@@ -100,7 +100,7 @@ CBI PORTB, PB0
 CBI PORTB, PB1
 CBI PORTB, PB2
 CBI PORTB, PB3
-SBI PINB, PB4
+SBI PINB, PB4 // Se reinicia el contador, se ponen los bits de salida del contador en 0 y se prende el quinto led de bandera.
 mainend2:
 RJMP LOOP
 
